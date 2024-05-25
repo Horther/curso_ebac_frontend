@@ -2,18 +2,23 @@ $(document).ready(function (){
 
     $('form').on('submit',function(e){
         e.preventDefault();
-        const nomeTarefa = $('#nome-tarefa').val();
-        const novaTarefa = $(`<li></li>`);
+        const nomeTarefa = $('#nome-tarefa').val().trim();
+        if(nomeTarefa !== ''){
 
-        //$(`${nomeTarefa}`).appendTo(novaTarefa);
-        $(`<p>${nomeTarefa}</p>`).appendTo(novaTarefa);
-        $(novaTarefa).appendTo('ul');
-        $('#nova-tarefa').val('');
+            const novaTarefa = $(`<li></li>`);
+    
+            //$(`${nomeTarefa}`).appendTo(novaTarefa);
+            $(`<a href="#" class='none'>${nomeTarefa}</a>`).appendTo(novaTarefa);
+            $(novaTarefa).appendTo('ul');
+            $('#nova-tarefa').val('');
+        } else {
+            alert('Adicione algo antes de confirmar');
+        }
 
     })
-
-    $('p').click(function(){
-        $(`<>`)
+    $('ul').on('click','.none',function (e){
+        e.preventDefault();
+        $(this).toggleClass('line-thru');
     })
 
 
