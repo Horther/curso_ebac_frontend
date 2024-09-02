@@ -1,0 +1,5 @@
+@use '../variaveis/variaveis';
+
+body {
+    background-color: variaveis.$bodyCorDeFundo;
+}
